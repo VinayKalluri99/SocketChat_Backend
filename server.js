@@ -40,7 +40,7 @@ io.on('connection', (socket) => {
     // console.table(RoomUserMap);
     const users=getConnectedUsers(room);
     io.to(room).emit('message', { type: 'join', sender: users });
-
+    io.to(room).emit('message', { type: 'msg', text:RoomMsgsMap[room] });
   });
 
   socket.on('sendMessage', ( identity, room, text ) => {
